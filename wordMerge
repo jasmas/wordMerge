@@ -1,0 +1,58 @@
+#!/bin/sh
+
+
+# Copyright (c) 2014 Jason Masker <jason@masker.net>
+# All rights reserved.
+
+# This file is part of darwin-word-git-merge-driver.
+
+# darwin-word-git-merge-driver is free software: you can redistribute
+# it and/or modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# Foobar is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
+exit `osascript <<EOS
+
+set a to "$1"
+set b to "$2"
+set a to POSIX file a
+set b to POSIX file b
+
+tell application "Finder" to set aname to (name of (info for a))
+
+tell application "Microsoft Word"
+	activate
+	close documents saving yes
+	open file name a
+	merge active document file name b
+	close document aname saving no
+end tell
+
+set question to display dialog "Merge successful?" buttons {"Yes", "No"} default button 2
+set answer to button returned of question
+
+tell application "Microsoft Word"
+	save as document 1 file name a file format format template
+	close document 1
+end tell
+
+if answer is equal to "Yes" then
+	return 0
+else
+	return 1
+end if
+
+EOS
+`
+
