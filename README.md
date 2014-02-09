@@ -32,21 +32,25 @@ commands to the 'osascript' command-line tool, included with OS X.
 Usage
 -----
 Copy wordMerge into your path and make it executable.
+
     cp wordMerge /usr/local/bin
     chmod 755 /usr/local/bin/wordMerge
 
 Copy the configuration from the included 'gitconfig' into your '~/.gitconfig' global git
 configuration file. Alternatively, you can issue the following commands:
+
     git config --global merge.wordMerge.name wordMerge
     git config --global merge.wordMerge.driver 'wordMerge "$PWD/%A" "$PWD/%B"'
 
 You will also need to create or modify the 'attributes' file in the 'info' directory of
 your git repositories to identify the file types that should be merged using the new
 driver. An example 'attributes' file has been included which includes the following:
+
     *.docx binary
     *.dotx binary
     *.docx merge=wordMerge
     *.dotx merge=wordMerge
+
 Add any other file extensions you would like to merge using Microsoft Word.
 
 When a merge of two files with the identified extensions is required, it will be performed
