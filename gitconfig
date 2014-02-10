@@ -19,4 +19,5 @@
 
 [merge "wordMerge"]
 	name = wordMerge
-	driver = wordMerge \"$PWD/%A\" \"$PWD/%B\" 
+	driver = wordMerge \"$PWD/%O\" \"$PWD/%A\" \"$PWD/%B\" 
+	recursive = binary

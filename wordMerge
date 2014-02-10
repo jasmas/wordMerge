@@ -22,26 +22,33 @@
 
 exit `osascript <<EOS
 
-set a to "$1"
-set b to "$2"
+set o to "$1"
+set a to "$2"
+set b to "$3"
+set o to POSIX file o
 set a to POSIX file a
 set b to POSIX file b
 
+tell application "Finder" to set oname to (name of (info for o))
 tell application "Finder" to set aname to (name of (info for a))
 
 tell application "Microsoft Word"
 	activate
 	close documents saving yes
-	open file name a
+	open file name o
+	merge document oname file name a
+	close document oname saving no
+	save as document 1 file name a file format format template
 	merge document aname file name b
 	close document aname saving no
+	save as document 1 file name a file format format template
 end tell
 
 set question to display dialog "Merge successful?" buttons {"Yes", "No"} default button 2
 set answer to button returned of question
 
 tell application "Microsoft Word"
-	save as document 1 file name a file format format template
+	save as document aname file name a file format format template
 	close document aname
 end tell
 

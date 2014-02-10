@@ -40,7 +40,8 @@ Copy the configuration from the included 'gitconfig' into your '~/.gitconfig' gl
 configuration file. Alternatively, you can issue the following commands:
 
     git config --global merge.wordMerge.name wordMerge
-    git config --global merge.wordMerge.driver 'wordMerge "$PWD/%A" "$PWD/%B"'
+    git config --global merge.wordMerge.driver 'wordMerge "$PWD/%O" "$PWD/%A" "$PWD/%B"'
+    git config --global merge.wordMerge.recursive binary
 
 You will also need to create or modify the 'attributes' file in the 'info' directory of
 your git repositories to identify the file types that should be merged using the new
@@ -54,8 +55,8 @@ driver. An example 'attributes' file has been included which includes the follow
 Add any other file extensions you would like to merge using Microsoft Word.
 
 When a merge of two files with the identified extensions is required, it will be performed
-using the newly defined wordMerge driver. Microsoft Word will open and merge the documents
-while tracking changes.
+using the newly defined wordMerge driver. Microsoft Word will open the common ancestor and
+merge the local and remote branches, tracking changes.
 
 The process will pause for the user to accept or reject the tracked changes using the 
 Review panel in Word. 
@@ -66,14 +67,14 @@ opportunity to pause or cancel the merge process.
 
 Caveats
 -------
-Microsoft Word cannot perform a three-way merge. The script currently works by combining
-the local and remote documents into a single merged document. In the future, this script
-will be modified to merge the local and remote documents into a common ancestor, tracking
-all changes.
-
 If there are formatting changes, Microsoft Word cannot merge them and will prompt for
-which document to use as a base for formatting. Often formatting changes to tables, etc.
-will need to be done manually.
+which document to use as a base for formatting. Formatting changes to tables, etc. will
+need to be done manually. When prompted, it is almost always best to choose the formatting
+for the 'Current Document' and not the 'Target Document.' This is because the merge action
+in Word is actually performed twice per merge. The common ancestor is opened and first the
+local branch changes are merged in, followed by the remote branch changes. Though you may
+be prompted twice, by choosing 'Current Document' each time, you are effectively keeping
+the formatting of the common ancestor.
 
 Due to the interactive nature of the script, it works best for a regular merge. If you opt
 to rebase using this merge driver, it will work, but there will be a manual, interactive
@@ -82,10 +83,10 @@ merge step for each change, which can be a tedious and redundant process.
 The script requires tracking the windows open in Microsoft Word and, in order to
 accomplish this, begins by closing all open documents and saving changes. It is best to
 close all open documents, or ensure that Microsoft Word is not running prior to beginning
-a merge.
+a merge. It is a future objective to eliminate this requirement and behavior.
 
 TODO
 ----
-*   Rework to perform three-way merge to common ancestor.
+*   Modify the script to work reliably without first closing all open Word documents.
 *   Modify driver for use as a diff driver.
 
