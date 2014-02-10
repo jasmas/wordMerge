@@ -57,8 +57,8 @@ When a merge of two files with the identified extensions is required, it will be
 using the newly defined wordMerge driver. Microsoft Word will open and merge the documents
 while tracking changes.
 
-The process will pause for you to accept or reject the tracked
-changes using the Review panel in Word. 
+The process will pause for the user to accept or reject the tracked changes using the 
+Review panel in Word. 
 
 Make any final edits and select 'Yes' or 'No' from the script prompt to indicate if the
 merge was successful or not. Marking the merge as unsuccessful gives the user an
@@ -78,6 +78,11 @@ will need to be done manually.
 Due to the interactive nature of the script, it works best for a regular merge. If you opt
 to rebase using this merge driver, it will work, but there will be a manual, interactive
 merge step for each change, which can be a tedious and redundant process.
+
+The script requires tracking the windows open in Microsoft Word and, in order to
+accomplish this, begins by closing all open documents and saving changes. It is best to
+close all open documents, or ensure that Microsoft Word is not running prior to beginning
+a merge.
 
 TODO
 ----
