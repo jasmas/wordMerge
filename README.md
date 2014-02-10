@@ -1,30 +1,30 @@
 Copyright (c) 2014 Jason Masker <jason@masker.net>
 All rights reserved. 
 
-This file is part of darwin-word-git-merge-driver.
+This file is part of wordMerge.
 
-darwin-word-git-merge-driver is free software: you can redistribute
-it and/or modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+wordMerge is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
 
-Foobar is distributed in the hope that it will be useful,
+wordMerge is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+along with wordMerge.  If not, see <http://www.gnu.org/licenses/>.
 
 Version 2014-02-08
 
-darwin-word-git-merge-driver
+wordMerge
 ============================
 
 Overview
 --------
-This is a git merge driver which can be used on an OSX/darwin system to merge Microsoft
-Word documents using the commercial software Microsoft Office for Mac 2011.
+wordMerge is a git merge driver for OSX/darwin which can be used to merge Microsoft Word
+documents using the commercial software Microsoft Office for Mac 2011.
 
 'wordMerge' is the primary driver, a shell script wrapper which passes applescript
 commands to the 'osascript' command-line tool, included with OS X.
