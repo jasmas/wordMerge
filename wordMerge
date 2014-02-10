@@ -33,7 +33,7 @@ tell application "Microsoft Word"
 	activate
 	close documents saving yes
 	open file name a
-	merge active document file name b
+	merge document aname file name b
 	close document aname saving no
 end tell
 
@@ -42,7 +42,7 @@ set answer to button returned of question
 
 tell application "Microsoft Word"
 	save as document 1 file name a file format format template
-	close document 1
+	close document aname
 end tell
 
 if answer is equal to "Yes" then
@@ -53,4 +53,5 @@ end if
 
 EOS
 `
+
 
