@@ -1,5 +1,5 @@
 Copyright (c) 2014 Jason Masker <jason@masker.net>
-All rights reserved. 
+All rights reserved.
 
 This file is part of wordMerge.
 
@@ -58,8 +58,8 @@ When a merge of two files with the identified extensions is required, it will be
 using the newly defined wordMerge driver. Microsoft Word will open the common ancestor and
 merge the local and remote branches, tracking changes.
 
-The process will pause for the user to accept or reject the tracked changes using the 
-Review panel in Word. 
+The process will pause for the user to accept or reject the tracked changes using the
+Review panel in Word.
 
 Make any final edits and select 'Yes' or 'No' from the script prompt to indicate if the
 merge was successful or not. Marking the merge as unsuccessful gives the user an
