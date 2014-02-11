@@ -19,7 +19,7 @@ along with wordMerge.  If not, see <http://www.gnu.org/licenses/>.
 Version 2014-02-08
 
 wordMerge
-============================
+=========
 
 Overview
 --------
